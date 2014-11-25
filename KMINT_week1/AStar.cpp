@@ -2,67 +2,73 @@
 #include "Node.h"
 #include "Edge.h"
 #include "Graph.h"
-#include <queue>
 
 AStar::AStar(Node* source, Node* target) {
 	openList = std::set<Node*>();
 	closedList = std::vector<Node*>();
-	//this->graph = graph;
+	cameFrom = std::map<int, Node*>();
 
 	this->source = source;
 	this->target = target;
 
-	if (!targetFound)
-		Find();
-	if (targetFound)
-		Trace();
+	openList.insert(source);
 }
 
 AStar::~AStar() {
 }
 
-void AStar::Find() {
-	Node* current = source;
+std::stack<Node*> AStar::Find() {
+	source->g_distanceToSource = 0;
+	source->f_totalDistance = source->g_distanceToSource + CalculateH(source->x, source->y, target->x, target->y);
 
-	for (int i = 0; i < current->GetEdges().size(); i++) {
-		if (!targetFound) {
-			Node* dest = current->GetEdges()[i]->child;
-			Search(current, dest);
-		}
-	}
-}
+	while (!openList.empty()) {
+		Node* current = (*openList.begin());
 
-void AStar::Search(Node* current, Node *dest) {
-	if (!dest)
-		return;
+		if (current == target)
+			return ReconstructPath(target);
 
-	if (dest == target) {
-		targetFound = true;
-		return;
-	}
+		openList.erase(current);
+		closedList.push_back(current);
 
-	// Check if dest not in closed list
-	if (std::find(closedList.begin(), closedList.end(), dest) == closedList.end()) {
-		// Check if dest is in open list
-		if (std::find(openList.begin(), openList.end(), dest) != openList.end()) {
-			double cost = current->g_distanceToSource + CalculateH(current->x, current->y, dest->x, dest->y);
+		for (int i = 0; i < current->GetEdges().size(); i++) {
+			Node* next = current->GetEdges()[i]->child;
+			// If 'next' is in closed list, continue
+			if (std::find(closedList.begin(), closedList.end(), next) != closedList.end())
+				continue;
 
-			if (cost < dest->g_distanceToSource) {
-				dest->g_distanceToSource = cost;
+			double g_Cost = current->g_distanceToSource + current->GetEdges()[i]->weight;
+
+			if (openList.find(next) == openList.end() || g_Cost < next->g_distanceToSource) {
+				cameFrom.insert(std::make_pair(next->id, current));
+				next->g_distanceToSource = g_Cost;
+				next->f_totalDistance = next->g_distanceToSource + CalculateH(next->x, next->y, target->x, target->y);
+				// If not on open list, add
+				if (openList.find(next) == openList.end())
+					openList.insert(next);
 			}
 		}
-		else { // Not in open list
-			
-		}
 	}
 }
 
+std::stack<Node*> AStar::ReconstructPath(Node* current) {
+	std::stack<Node*> totalPath = std::stack<Node*>();
+	totalPath.push(current);
+
+	int id = current->id;
+	while (cameFrom[id] != nullptr) {
+		Node* prev = cameFrom[id];
+		totalPath.push(prev);
+		id = prev->id;
+	}
+
+	return totalPath;
+}
 
 float AStar::CalculateH(int x1, int y1, int x2, int y2)
 {
-	float distance, tempx, tempy, tempz;
+	float distance, tempx, tempy;
 	tempx = (x1 - x2);
-	tempx = tempx * tempx; //compiler _might_ be able to make this faster
+	tempx = tempx * tempx;
 	tempy = (y1 - y2);
 	tempy = tempy * tempy;
 	distance = tempx + tempy;

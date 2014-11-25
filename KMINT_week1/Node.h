@@ -9,10 +9,10 @@ class Node
 {
 public:
 	Node();
-	Node(int x, int y, std::string id);
+	Node(int x, int y, int id);
 	virtual ~Node();
 
-	std::string id;
+	int id;
 
 	int x, y;
 	double f_totalDistance;

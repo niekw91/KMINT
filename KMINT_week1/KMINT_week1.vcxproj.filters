@@ -19,11 +19,29 @@
     <Filter Include="Header Files\Graph">
       <UniqueIdentifier>{0703722c-393f-4d41-b34a-557cab2dd065}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Helpers">
-      <UniqueIdentifier>{abffd9f2-5fee-4665-9667-b386ccf89620}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Helpers">
       <UniqueIdentifier>{2f6db1eb-ee36-4ebd-a1ff-250597f263f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{abffd9f2-5fee-4665-9667-b386ccf89620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Algorithms">
+      <UniqueIdentifier>{e70ddf75-11a9-4edd-a3b6-49b1c08a535a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms">
+      <UniqueIdentifier>{c5038142-dc54-48aa-8ffb-0865832e78d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Drawing">
+      <UniqueIdentifier>{8427202b-5587-453e-8e01-dda2f35b9c43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Drawing\SDL">
+      <UniqueIdentifier>{01d72dc5-52d7-4121-8d12-64df15d4149b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drawing">
+      <UniqueIdentifier>{afcdb3c7-eb68-4b6f-93c0-3c4958d96a01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drawing\SDL">
+      <UniqueIdentifier>{4628ba4e-02f5-4bb5-8f93-11e68b02021b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,17 +57,20 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files\Graph</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SDL_DrawEllipse.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
     <ClCompile Include="AStar.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLEngine.cpp">
+      <Filter>Source Files\Drawing\SDL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,17 +83,20 @@
     <ClInclude Include="Node.h">
       <Filter>Header Files\Graph</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SDL_DrawEllipse.h">
-      <Filter>Helpers</Filter>
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="AStar.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLEngine.h">
+      <Filter>Header Files\Drawing\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Drawing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

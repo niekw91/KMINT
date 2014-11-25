@@ -5,7 +5,7 @@ Node::Node() {
 
 }
 
-Node::Node(int x, int y, std::string id) {
+Node::Node(int x, int y, int id) {
 	edges = std::vector<Edge*>();
 	this->x = x;
 	this->y = y;
@@ -20,10 +20,16 @@ Node* Node::AddEdge(Node *child, int w) {
 	Edge *edge = new Edge(w, this, child);
 	edges.push_back(edge);
 
-	for (auto e : child->GetEdges()) {
-		if (e->parent != child && e->child == this)
-			child->AddEdge(this, w);
+	bool createEdge = true;
+	if (!child->GetEdges().empty()) {
+		for (auto e : child->GetEdges()) {
+			if (e->parent == child && e->child == this)
+				createEdge = false;
+		}
 	}
+	// Create edge if child->GetEdges is empty OR edge does not already exist
+	if (createEdge)
+		child->AddEdge(this, w);
 
 	return this;
 }

@@ -5,20 +5,20 @@
 #include "Node.h"
 #include "Edge.h"
 #include "GameObject.h"
+#include "AStar.h"
+
+#include <stack>
 
 Graph* InitGraph();
-void Update();
 void Draw(Graph *g, SDLEngine *e, GameObject *cow, GameObject *rabbit);
+void CalcShortestPath(AStar *aStar);
 Node* HandleMouseEvent(SDL_MouseButtonEvent e, Graph *g);
 
 int main(int argc, char* argv[])
 {
-	bool quit = false;
-
 	Graph* graph = InitGraph();
 
 	SDLEngine *engine = new SDLEngine(800, 600);
-
 
 	GameObject *cow = new GameObject("Cow", graph->root);
 	GameObject *rabbit = new GameObject("Rabbit", graph->allNodes[3]);
@@ -38,14 +38,25 @@ int main(int argc, char* argv[])
 			if (event.button.type == SDL_MOUSEBUTTONDOWN) {
 				Node *dest = HandleMouseEvent(event.button, graph);
 				if (dest) {
+					// Calculate shortest path
+					AStar *aStar = new AStar(cow->current, dest);
+					CalcShortestPath(aStar);
+
+					// If destination contains rabbit, jump to another node
+					if (dest->GetGameObject() != nullptr) {
+						if (dest->GetGameObject()->name == "Rabbit") {
+							Node* random = nullptr;
+							do {
+								random = graph->GetRandomNode(rabbit->current);
+							} while (random == cow->current);
+							rabbit->MoveTo(random);
+						}
+					}
 					cow->MoveTo(dest);
 					Draw(graph, engine, cow, rabbit);
 				}
 			}
-
 		}
-
-		
 		engine->Render();
 	}
 
@@ -54,18 +65,31 @@ int main(int argc, char* argv[])
 
 Graph* InitGraph() {
 	Graph *g = new Graph();
-	Node *root = g->CreateRoot(110, 200, "A");
-	Node *child = g->CreateNode(210, 120, "B");
-	root->AddEdge(child, 50);
-	Node *node = g->CreateNode(150, 300, "C");
-	root->AddEdge(node, 30);
-	node->AddEdge(child, 70);
-	child = g->CreateNode(320, 250, "D");
-	node->AddEdge(child, 120);
-	Node *child2 = g->CreateNode(260, 310, "E");
-	node->AddEdge(child2, 40);
-	child2->AddEdge(child, 60);
+	Node *root = g->CreateRoot(110, 200, 1);
+	Node *child = g->CreateNode(210, 120, 2);
+	root->AddEdge(child, 50000);
+	Node *node = g->CreateNode(150, 300, 3);
+	root->AddEdge(node, 30000);
+	node->AddEdge(child, 70000);
+	child = g->CreateNode(320, 250, 4);
+	node->AddEdge(child, 120000);
+	Node *child2 = g->CreateNode(260, 310, 5);
+	node->AddEdge(child2, 40000);
+	child2->AddEdge(child, 60000);
 	return g;
+}
+
+void CalcShortestPath(AStar *aStar) {
+	std::stack<Node*> path = aStar->Find();
+	printf("Shortest path: ");
+	while (!path.empty()) {
+		Node* step = path.top();
+		path.pop();
+		printf("[");
+		printf(std::to_string(step->id).c_str());
+		printf("] ");
+	}
+	printf("\n");
 }
 
 void Draw(Graph *g, SDLEngine *e, GameObject *cow, GameObject *rabbit) {
@@ -77,13 +101,13 @@ void Draw(Graph *g, SDLEngine *e, GameObject *cow, GameObject *rabbit) {
 			Node *child = ed->child;
 			e->DrawLine(n->x, n->y, child->x, child->y);
 
-			int x = n->x > child->x ? n->x - (n->x - child->x) : child->x - (child->x - n->x);
-			int y = n->y > child->y ? n->y - (n->y - child->y) : child->y - (child->y - n->y);
+			int x = (n->x + child->x) / 2;
+			int y = (n->y + child->y) / 2;
 
 			e->RenderText(std::to_string(ed->weight), x, y);
 		}
 
-		e->RenderText(n->id, n->x, n->y);
+		e->RenderText(std::to_string(n->id), n->x, n->y);
 	}
 
 	e->RenderImage(cow);

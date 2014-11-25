@@ -10,8 +10,9 @@ public:
 	Graph();
 	virtual ~Graph();
 
-	Node* CreateRoot(int x, int y, std::string id);
-	Node* CreateNode(int x, int y, std::string id);
+	Node* CreateRoot(int x, int y, int id);
+	Node* CreateNode(int x, int y, int id);
+	Node* GetRandomNode(Node *current);
 
 	Node* root;
 	std::vector<Node*> allNodes;

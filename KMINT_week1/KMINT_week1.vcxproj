@@ -90,6 +90,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="SDLEngine.cpp" />
     <ClCompile Include="SDL_DrawEllipse.cpp" />
   </ItemGroup>
@@ -99,6 +100,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="SDLEngine.h" />
     <ClInclude Include="SDL_DrawEllipse.h" />
   </ItemGroup>
