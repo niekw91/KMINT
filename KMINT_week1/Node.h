@@ -25,13 +25,17 @@ public:
 
 	void CalculateH(Node *dest);
 
-	bool operator<(const Node& n)const {
-		return f_totalDistance < n.f_totalDistance;
-
+	//bool operator<(const Node& n)const;
+	bool Node::operator<(const Node& n)const {
 		if (f_totalDistance != n.f_totalDistance)
 			return f_totalDistance < n.f_totalDistance;
 
+		if (x == n.x)
+			return y < n.y;
+		else
+			return x < n.x;
 	}
+
 
 private:
 	GameObject *gameObject;

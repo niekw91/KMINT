@@ -1,8 +1,20 @@
-﻿Build started 11/25/2014 10:53:40 AM.
+﻿Build started 11/30/2014 4:36:47 PM.
      1>Project "C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\KMINT_week1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\sdl\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt game.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\sdl\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AStar.cpp Edge.cpp GameObject.cpp Graph.cpp Node.cpp SDLEngine.cpp game.cpp
+         AStar.cpp
+     1>c:\users\niek willems\documents\github\kmint\kmint_week1\astar.cpp(33): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\niek willems\documents\github\kmint\kmint_week1\astar.cpp(70): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\niek willems\documents\github\kmint\kmint_week1\astar.cpp(72): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
+     1>c:\users\niek willems\documents\github\kmint\kmint_week1\astar.cpp(51): warning C4715: 'AStar::Find' : not all control paths return a value
+         Skipping... (no relevant changes detected)
          game.cpp
+         SDLEngine.cpp
+         Node.cpp
+         Graph.cpp
+         GameObject.cpp
+         Edge.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\Debug\KMINT_week1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\sdl\lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib sdl2main.lib sdl2.lib sdl2_image.lib SDL2_ttf.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\Debug\KMINT_week1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Niek Willems\Documents\GitHub\KMINT\KMINT_week1\Debug\KMINT_week1.lib" /MACHINE:X86 Debug\AStar.obj
          Debug\Edge.obj
@@ -31,4 +43,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.93
+Time Elapsed 00:00:02.20
