@@ -25,7 +25,13 @@ private:
 	float CalculateH(int x1, int y1, int x2, int y2);
 	std::stack<Node*> ReconstructPath(Node* current);
 
-	std::set<Node*> openList;
+	class CompareNode
+	{
+	public:
+		bool operator () (const Node*, const Node*) const;
+	};
+
+	std::set<Node*, CompareNode> openList;
 	std::vector<Node*> closedList;
 	std::map<int, Node*> cameFrom;
 };

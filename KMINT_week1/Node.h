@@ -26,7 +26,7 @@ public:
 	void CalculateH(Node *dest);
 
 	//bool operator<(const Node& n)const;
-	bool Node::operator<(const Node& n)const {
+	bool operator<(const Node& n)const {
 		if (f_totalDistance != n.f_totalDistance)
 			return f_totalDistance < n.f_totalDistance;
 

@@ -4,14 +4,15 @@
 #include "Graph.h"
 
 AStar::AStar(Node* source, Node* target) {
-	openList = std::set<Node*>();
-	closedList = std::vector<Node*>();
-	cameFrom = std::map<int, Node*>();
+	//openList = std::set<Node*, CompareNode>();
+	//closedList = std::vector<Node*>();
+	//cameFrom = std::map<int, Node*>();
 
 	this->source = source;
 	this->target = target;
 
 	openList.insert(source);
+	cameFrom[source->id] = nullptr;
 }
 
 AStar::~AStar() {
@@ -39,11 +40,14 @@ std::stack<Node*> AStar::Find() {
 			double g_Cost = current->g_distanceToSource + current->GetEdges()[i]->weight;
 
 			if (openList.find(next) == openList.end() || g_Cost < next->g_distanceToSource) {
-				cameFrom.insert(std::make_pair(next->id, current));
+				cameFrom[next->id] = current;
+//				cameFrom.insert(std::make_pair(next->id, current));
+				if (openList.find(next) != openList.end())
+					openList.erase(next);
 				next->g_distanceToSource = g_Cost;
 				next->f_totalDistance = next->g_distanceToSource + CalculateH(next->x, next->y, target->x, target->y);
 				// If not on open list, add
-				if (openList.find(next) == openList.end())
+				//if (openList.find(next) == openList.end())
 					openList.insert(next);
 			}
 		}
@@ -74,4 +78,16 @@ float AStar::CalculateH(int x1, int y1, int x2, int y2)
 	distance = tempx + tempy;
 	distance = sqrt(distance);
 	return distance;
+}
+
+bool AStar::CompareNode::operator() (const Node* pNode1, const Node* pNode2) const
+{
+	if (pNode1 == pNode2)
+		return false;
+	if (pNode1 == nullptr)
+		return true;
+	if (pNode2 == nullptr)
+		return false;
+
+	return *pNode1 < *pNode2;
 }

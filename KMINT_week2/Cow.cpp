@@ -1,11 +1,11 @@
 #include "Cow.h"
 #include "Node.h"
-#include "WanderingState.h"
+#include "CowWanderingState.h"
 
 
 Cow::Cow(int id, std::string name, Node* start, Graph* graph) : BaseGameEntity(id, name, start, graph) {
 	stateMachine = new StateMachine<Cow>(this);
-	stateMachine->SetCurrentState(WanderingState::Instance());
+	stateMachine->SetCurrentState(CowWanderingState::Instance());
 	//stateMachine->SetGlobalState(MinerGlobalState::Instance());
 }
 

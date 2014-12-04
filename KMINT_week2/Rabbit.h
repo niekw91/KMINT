@@ -14,7 +14,8 @@ public:
 	virtual ~Rabbit();
 
 	void Update();
-	void MoveTo(Node *dest);
+	void MoveTo(Node *dest); 
+	std::string GetCurrentState();
 	StateMachine<Rabbit>* GetFSM()const
 	{
 		return stateMachine;

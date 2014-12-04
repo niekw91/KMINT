@@ -89,30 +89,33 @@
     <ClCompile Include="BaseGameEntity.cpp" />
     <ClCompile Include="ChaseRabbitState.cpp" />
     <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="CowWanderingState.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameItem.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="RabbitWanderingState.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="SDLEngine.cpp" />
     <ClCompile Include="SDL_DrawEllipse.cpp" />
     <ClCompile Include="SearchWeaponState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="WanderingState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AStar.h" />
     <ClInclude Include="BaseGameEntity.h" />
     <ClInclude Include="ChaseRabbitState.h" />
     <ClInclude Include="Cow.h" />
+    <ClInclude Include="CowWanderingState.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="GameItem.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="RabbitWanderingState.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="SDLEngine.h" />
     <ClInclude Include="SDL_DrawEllipse.h" />
@@ -120,7 +123,6 @@
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="WanderingState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

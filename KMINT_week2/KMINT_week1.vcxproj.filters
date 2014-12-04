@@ -49,6 +49,18 @@
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{d0be1074-92bc-47c6-9862-beedb5643b20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\States">
+      <UniqueIdentifier>{1244038a-5802-49d2-94bb-d9e693b3d0ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\States">
+      <UniqueIdentifier>{4e397b21-9af4-4ff8-8d56-c508f6579de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\GameObjects">
+      <UniqueIdentifier>{3902c3f3-febb-4e8d-9521-6913542ed8b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\GameObjects">
+      <UniqueIdentifier>{e147c6fb-5cdb-473e-8c46-5d8d79a2b3ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -75,32 +87,35 @@
     <ClCompile Include="SDLEngine.cpp">
       <Filter>Source Files\Drawing\SDL</Filter>
     </ClCompile>
-    <ClCompile Include="Cow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rabbit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StateMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseGameEntity.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="WanderingState.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ChaseRabbitState.cpp">
+      <Filter>Source Files\Game\States</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="CowWanderingState.cpp">
+      <Filter>Source Files\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitWanderingState.cpp">
+      <Filter>Source Files\Game\States</Filter>
     </ClCompile>
     <ClCompile Include="SearchWeaponState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\States</Filter>
     </ClCompile>
     <ClCompile Include="GameItem.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="ChaseRabbitState.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Cow.cpp">
+      <Filter>Source Files\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Rabbit.cpp">
+      <Filter>Source Files\Game\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Source Files\Game\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,32 +143,35 @@
     <ClInclude Include="BaseGameEntity.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Cow.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ChaseRabbitState.h">
+      <Filter>Header Files\Game\States</Filter>
     </ClInclude>
-    <ClInclude Include="Rabbit.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CowWanderingState.h">
+      <Filter>Header Files\Game\States</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StateMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderingState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Timer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="RabbitWanderingState.h">
+      <Filter>Header Files\Game\States</Filter>
     </ClInclude>
     <ClInclude Include="SearchWeaponState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Cow.h">
+      <Filter>Header Files\Game\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameItem.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="ChaseRabbitState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Rabbit.h">
+      <Filter>Header Files\Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Header Files\Game\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

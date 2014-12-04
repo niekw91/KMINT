@@ -75,6 +75,7 @@ int main(int argc, char* argv[])
 		}
 
 		cow->Update();
+		rabbit->Update();
 		Draw(graph, engine, cow, rabbit, gun);
 		engine->Render();
 
@@ -167,7 +168,7 @@ void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, GameItem *gun) {
 			int x = (n->x + child->x) / 2;
 			int y = (n->y + child->y) / 2;
 
-			e->RenderText(std::to_string(ed->weight), x, y);
+			e->RenderText(std::to_string(ed->weight), x, y + 15);
 		}
 
 		e->RenderText(std::to_string(n->id), n->x, n->y);
@@ -176,6 +177,7 @@ void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, GameItem *gun) {
 	e->RenderImage(cow);
 	e->RenderText(cow->GetCurrentState(), cow->GetPosition()->x, cow->GetPosition()->y + 60);
 	e->RenderImage(rabbit);
+	e->RenderText(rabbit->GetCurrentState(), rabbit->GetPosition()->x, rabbit->GetPosition()->y + 60);
 	e->RenderImage(gun);
 }
 
