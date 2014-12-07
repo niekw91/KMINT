@@ -96,6 +96,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="RabbitSleepingState.cpp" />
     <ClCompile Include="RabbitWanderingState.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="SDLEngine.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="RabbitSleepingState.h" />
     <ClInclude Include="RabbitWanderingState.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="SDLEngine.h" />

@@ -117,6 +117,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="RabbitSleepingState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Edge.h">
@@ -172,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Header Files\Game\States</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitSleepingState.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

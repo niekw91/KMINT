@@ -15,7 +15,7 @@
 #include <stack>
 
 Graph* InitGraph();
-void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, GameItem *gun);
+void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, std::vector<GameItem*> gameItems);
 void CalcShortestPath(AStar *aStar);
 Node* HandleMouseEvent(SDL_MouseButtonEvent e, Graph *g);
 
@@ -51,12 +51,18 @@ int main(int argc, char* argv[])
 	Cow *cow = new Cow(1, "Cow", graph->GetRandomNode(nullptr), graph);
 	Rabbit *rabbit = new Rabbit(2, "Rabbit", graph->GetRandomNode(nullptr), graph);
 	GameItem *gun = new GameItem(3, "Gun", graph->GetRandomNode(rabbit->GetPosition()), graph);
+	GameItem *pill = new GameItem(4, "Pill", graph->GetRandomNode(gun->GetPosition()), graph);
 
 	cow->GetPosition()->AddEntity(cow);
 	rabbit->GetPosition()->AddEntity(rabbit);
 	gun->GetPosition()->AddEntity(gun);
+	pill->GetPosition()->AddEntity(pill);
+
+	std::vector<GameItem*> gameItems;
+	gameItems.push_back(gun);
+	gameItems.push_back(pill);
 	
-	Draw(graph, engine, cow, rabbit, gun);
+	Draw(graph, engine, cow, rabbit, gameItems);
 
 
 	/*
@@ -76,7 +82,7 @@ int main(int argc, char* argv[])
 
 		cow->Update();
 		rabbit->Update();
-		Draw(graph, engine, cow, rabbit, gun);
+		Draw(graph, engine, cow, rabbit, gameItems);
 		engine->Render();
 
 		++countedFrames;
@@ -93,29 +99,6 @@ int main(int argc, char* argv[])
 		{
 			if (event.type == SDL_QUIT)
 				return 0;
-
-
-			//if (event.button.type == SDL_MOUSEBUTTONDOWN) {
-			//	Node *dest = HandleMouseEvent(event.button, graph);
-			//	if (dest) {
-			//		// Calculate shortest path
-			//		AStar *aStar = new AStar(cow->GetPosition(), dest);
-			//		CalcShortestPath(aStar);
-
-			//		// If destination contains rabbit, jump to another node
-			//		if (dest->GetEntity() != nullptr) {
-			//			if (dest->GetEntity()->GetName() == "Rabbit") {
-			//				Node* random = nullptr;
-			//				do {
-			//					random = graph->GetRandomNode(rabbit->GetPosition());
-			//				} while (random == cow->GetPosition());
-			//				rabbit->MoveTo(random);
-			//			}
-			//		}
-			//		cow->MoveTo(dest);
-			//		Draw(graph, engine, cow, rabbit);
-			//	}
-			//}
 		}
 
 	}
@@ -156,7 +139,7 @@ void CalcShortestPath(AStar *aStar) {
 	printf("\n");
 }
 
-void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, GameItem *gun) {
+void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, std::vector<GameItem*> gameItems) {
 	e->DrawEllipseFromGraph(g);
 
 	for (auto n : g->allNodes) {
@@ -178,7 +161,8 @@ void Draw(Graph *g, SDLEngine *e, Cow *cow, Rabbit *rabbit, GameItem *gun) {
 	e->RenderText(cow->GetCurrentState(), cow->GetPosition()->x, cow->GetPosition()->y + 60);
 	e->RenderImage(rabbit);
 	e->RenderText(rabbit->GetCurrentState(), rabbit->GetPosition()->x, rabbit->GetPosition()->y + 60);
-	e->RenderImage(gun);
+	for (auto g : gameItems)
+		e->RenderImage(g);
 }
 
 Node* HandleMouseEvent(SDL_MouseButtonEvent e, Graph *g) {
