@@ -31,6 +31,7 @@ void RabbitAttackState::Execute(Rabbit* rabbit)
 		if (e->child->ContainsEntity("Cow")) {
 			BaseGameEntity *entity = e->child->ContainsEntity("Cow");
 			rabbit->ThrowAway();
+
 			Node* random = rabbit->GetGraph()->GetRandomNode(entity->GetPosition());
 			entity->GetPosition()->RemoveEntity(entity);
 			random->AddEntity(entity);

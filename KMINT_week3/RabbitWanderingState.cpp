@@ -17,7 +17,7 @@ RabbitWanderingState* RabbitWanderingState::Instance() {
 }
 
 void RabbitWanderingState::Enter(Rabbit* rabbit) {
-
+	printf("Rabbit: wandering\n");
 }
 
 void RabbitWanderingState::Execute(Rabbit* rabbit)

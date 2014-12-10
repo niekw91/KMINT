@@ -42,7 +42,7 @@ bool Rabbit::HasPill() {
 }
 
 bool Rabbit::HasWeapon() {
-	if (item && item->GetName() == "Weapon")
+	if (item && item->GetName() == "Gun")
 		return true;
 	return false;
 }
